@@ -1,8 +1,8 @@
 <?php
 
 class Router{
-	public static function get($type, $route, $picker = ""){
-		$arr = explode("/", $route);
+	public static function get($type){
+		$arr = explode("/", ROUTE);
 		
 		if(count($arr) > 0){
 			switch($type){
@@ -18,13 +18,8 @@ class Router{
 					return isset($arr[2]) ? $arr[2] : false;
 				break;
 				
-				case "picker":
-					return isset($arr[$picker]) ? $arr[$picker] : false;
-				break;
-				
-				case "path":
-					array_shift($arr);
-					return implode("/", $arr);
+				default:
+					return isset($arr[$type]) ? $arr[$type] : "";
 				break;
 			}
 		}else{

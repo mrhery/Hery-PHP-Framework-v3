@@ -20,4 +20,5 @@ error_reporting(E_ALL);
 
 #Put your website URL
 define("PORTAL", "https://web-url-here.com/");
+define("NAME", "Website Name Goes Here");
 ?>
