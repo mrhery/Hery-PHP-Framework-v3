@@ -40,7 +40,7 @@ class App{
 				* Please left below cases and do not remove these line
 				*/
 				case "assets":
-					$filename = Router::get("path", $route);
+					$filename = Router::get("path");
 					
 					if(!empty($filename)){
 						Loader::Asset($filename);

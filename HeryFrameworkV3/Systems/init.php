@@ -10,6 +10,7 @@ require_once(__DIR__ . "/Misc/document_access.php");
 /*#*/ define("ASSET", SYSTEM . "Assets/"); 		  #
 /*#*/ define("UPLOAD", ASSET . "medias/"); 		  #
 /*#*/ define("CLASSES", SYSTEM . "App/Classes/"); #
+/*#*/ define("ROUTE", Input::get("route")); 		#
 ###################################################
 
 #PHP Autoload

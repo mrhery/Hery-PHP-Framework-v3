@@ -18,6 +18,11 @@ class Router{
 					return isset($arr[2]) ? $arr[2] : false;
 				break;
 				
+				case "path":
+					array_shift($arr);
+					return implode("/", $arr);
+				break;
+				
 				default:
 					return isset($arr[$type]) ? $arr[$type] : "";
 				break;
@@ -28,8 +33,8 @@ class Router{
 	}
 	
 	
-	public static function pathToAsset($router){
-		$a = explode("/", $router);
+	public static function pathToAsset(){
+		$a = explode("/", ROUTE);
 		$n = count($a);
 		
 		$path = "";
