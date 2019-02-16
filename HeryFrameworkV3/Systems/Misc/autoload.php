@@ -7,6 +7,8 @@ spl_autoload_register(function($class){
 	if(count($ar) < 2){
 		if(file_exists(dirname(__DIR__) . "/Core/" . $ar[0] . ".php")){
 			include_once(dirname(__DIR__) . "/Core/" . $ar[0] . ".php");
+		}else{
+			die("Class name " . $class . " not found in HPF Core Engine and in additional Classes directory.");
 		}
 	}else{
 		$path = dirname(__DIR__) . "/Core";
@@ -17,6 +19,8 @@ spl_autoload_register(function($class){
 		
 		if(file_exists($path)){
 			include_once($path);
+		}else{
+			die("Class name " . $class . " not found in HPF Core Engine and in additional Classes directory.");
 		}
 	}
 });

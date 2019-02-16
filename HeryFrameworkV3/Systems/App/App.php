@@ -2,66 +2,26 @@
 require_once(dirname(__DIR__) . "/Misc/document_access.php");
 
 class App{
-	public function __construct($route = "", $autoload = false){
-		$main = Router::get("main", $route);
-		$path = __DIR__ . "/View/pages/" . $main . ".php";
+	public function __construct($name = DEF_NAME){
+		define("NAME", $name);
 		
-		/*
-			If you are creating page directly and not using Page Class, you may enable $autoload = true in new App() at index.php
-		*/
-		if($autoload){
-			if(is_file(__DIR__ . "/View/pages/" . $main . ".php")){
-				Loader::Include("header");
-				include_once($path);
-				Loader::Include("footer");
-			}else{
-				die("Requested file " . $main . ".php not found in current application directory.");
-			}
-		}else{
-			$page = new Page();
+		$page = new Page();
+		$page->title = "Hery - " . NAME;
+		
+		switch(Router::get("main")){
+			case "index":
+				
+				$page->loadPage("index");
+				$page->Render();
+			break;
 			
-			switch($main){
-				case "index":
-				case "Home":
-				case "home":
-					$page->title = "Hery PHP Framework V2 - Master Hery";
-					$page->loadPage("index");
-					$page->Render();
-				break;
-				
-				
-				
-				
-				
-				#################################################################
-				#################################################################
-				
-				/*
-				* Please left below cases and do not remove these line
-				*/
-				case "assets":
-					$filename = Router::get("path");
-					
-					if(!empty($filename)){
-						Loader::Asset($filename);
-					}else{
-						$page->title = "Page Not Found";
-						$page->loadPage("404");
-						$page->Render();
-					}
-				break;
-				
-				case "medias":
-					Loader::Image($route);
-				break;
-				
-				default:
-					$page->title = "Page Not Found";
-					$page->loadPage("404");
-					$page->Render();
-				break;
-			}
+			case "test":
+				$page->loadPage("test");
+				$page->Render();
+			break;
 		}
+		
+		
 	}
 }
 

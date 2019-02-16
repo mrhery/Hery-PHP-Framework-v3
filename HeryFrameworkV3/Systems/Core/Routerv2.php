@@ -1,5 +1,5 @@
 <?php
-class Router{
+class Routerv2{
 	private $request;
 	private $supportedHttpMethods = array(
 		"GET",
@@ -56,7 +56,7 @@ class Router{
 			$this->defaultRequestHandler();
 			return;
 		}
-		echo call_user_func_array($method, array($this->request));
+		echo call_user_func_array($method, array($this->request)) . "adsasdasd";
 	}
   
 	function __destruct(){
