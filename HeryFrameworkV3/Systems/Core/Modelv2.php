@@ -39,7 +39,19 @@ trait Modelv2{
 		
 		$x = DB::conn()->q($sql);
 		
-		return $x->results();
+		$datas = [];
+		foreach($x->results() as $values){
+			$data = (object)[];
+			foreach($values as $key => $value){
+				$data->{$key} = call_user_func(function($val){
+					return F::StringChar($val);
+				}, $value);
+			}
+			
+			$datas[] = $data;
+		}
+		
+		return $datas;
 	}
 	
 	public static function getBy($column){
@@ -58,7 +70,19 @@ trait Modelv2{
 		
 		$x = DB::conn()->query($sql, $column);
 		
-		return $x->results();
+		$datas = [];
+		foreach($x->results() as $values){
+			$data = (object)[];
+			foreach($values as $key => $value){
+				$data->{$key} = call_user_func(function($val){
+					return F::StringChar($val);
+				}, $value);
+			}
+			
+			$datas[] = $data;
+		}
+		
+		return $datas;
 	}
 	
 	public static function insertInto($data){

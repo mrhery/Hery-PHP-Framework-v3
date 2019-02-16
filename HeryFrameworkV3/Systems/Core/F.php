@@ -42,6 +42,10 @@ class F{
 		return $url;
 	}
 	
+	public static function StringChar($str){
+		return htmlspecialchars($str);
+	}
+	
 	public static function Encode64($string){
 		return base64_encode($string);
 	}
