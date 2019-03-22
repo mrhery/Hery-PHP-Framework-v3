@@ -54,7 +54,7 @@ trait Modelv2{
 		return $datas;
 	}
 	
-	public static function getBy($column){
+	public static function getBy($column, $s = false){
 		$sql = "SELECT * FROM " . self::$table . " WHERE";
 	
 		$i = 0;
@@ -70,19 +70,25 @@ trait Modelv2{
 		
 		$x = DB::conn()->query($sql, $column);
 		
-		$datas = [];
-		foreach($x->results() as $values){
-			$data = (object)[];
-			foreach($values as $key => $value){
-				$data->{$key} = call_user_func(function($val){
-					return F::StringChar($val);
-				}, $value);
+		if($s){
+			$datas = [];
+			foreach($x->results() as $values){
+				$data = (object)[];
+				foreach($values as $key => $value){
+					$data->{$key} = call_user_func(function($val){
+						return F::StringChar($val);
+					}, $value);
+				}
+				
+				$datas[] = $data;
 			}
 			
-			$datas[] = $data;
+			return $datas;
+		}else{
+			return $x->results();
 		}
+		/**/
 		
-		return $datas;
 	}
 	
 	public static function insertInto($data){
