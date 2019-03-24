@@ -97,7 +97,7 @@ trait Modelv2{
 		return ($x->error() ? false : true);
 	}
 	
-	public function deleteBy($data){
+	public static function deleteBy($data){
 		$sql = "DELETE FROM " . self::$table . " WHERE";
 		
 		$i = 0;
