@@ -56,7 +56,7 @@ class Routerv2{
 			$this->defaultRequestHandler();
 			return;
 		}
-		echo call_user_func_array($method, array($this->request)) . "adsasdasd";
+		echo call_user_func_array($method, array($this->request));
 	}
   
 	function __destruct(){

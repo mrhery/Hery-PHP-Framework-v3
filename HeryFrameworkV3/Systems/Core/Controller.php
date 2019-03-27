@@ -4,8 +4,8 @@ require_once(dirname(__DIR__) . "/Misc/document_access.php");
 class Controller{
 	public function __construct($action, $route = ""){
 		if(isset($_POST["submit"])){
-			if(Input::get("submit") == $_SESSION["IR"]){
-				$this->Execute(Input::get("route"), $route);
+			if(Input::post("submit") == $_SESSION["IR"]){
+				$this->Execute(Input::post("route"), $route);
 				F::NewReqKey();
 			}else{
 				new Alert("error", "Request token has expired, please try again.");
