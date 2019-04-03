@@ -93,7 +93,7 @@ class Page{
 		}
 		$footer = str_replace("{BOTTOM_TAG}", $bottom, $footer);
 		
-		header("Content-Type: " . $this->contentType);
+		//header("Content-Type: " . $this->contentType);
 		echo $header;
 		
 		if(!empty($this->main_menu)){
