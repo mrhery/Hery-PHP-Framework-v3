@@ -1,4 +1,7 @@
 <?php
+require_once(__DIR__ . "/Misc/document_access.php");
+require_once(__DIR__ . "/Misc/session.php");
+require_once(__DIR__ . "/Misc/asset_loader.php");
 
 
 #Database connection information.

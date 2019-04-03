@@ -16,10 +16,6 @@ session_start();
 /*#*/ define("DEF_NAME", "Developed with HPF");	  #
 ###################################################
 
-#Load Misc File & Addon
-require_once(__DIR__ . "/Misc/session.php");
-require_once(__DIR__ . "/Misc/asset_loader.php");
-
 #Database Configuration
 require_once(__DIR__ . "/configure.php");
 
