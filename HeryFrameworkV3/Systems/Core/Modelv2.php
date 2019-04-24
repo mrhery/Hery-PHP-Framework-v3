@@ -54,9 +54,10 @@ trait Modelv2{
 		return $datas;
 	}
 	
-	public static function getBy($column, $s = false){
+	public static function getBy($column, $setting = []){
 		$sql = "SELECT * FROM " . self::$table . " WHERE";
-	
+	    $s = false;
+	    
 		$i = 0;
 		foreach($column as $key => $value){
 			if($i == 0){
@@ -66,6 +67,18 @@ trait Modelv2{
 			}
 			
 			$i++;
+		}
+		
+		foreach($setting as $key => $value){
+		    switch($key){
+		        case "order":
+		            $sql .= " ORDER BY " . $value;    
+		        break;
+		        
+		        case "limit":
+		            $sql .= " LIMIT " . $value;
+		        break;
+		    }
 		}
 		
 		$x = DB::conn()->query($sql, $column);
